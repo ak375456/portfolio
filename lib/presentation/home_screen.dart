@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/util/custom_top_appbar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,8 +7,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Portfolio"),
+      body: Column(
+        children: [
+          CustomTopAppbar(),
+        ],
       ),
     );
   }
