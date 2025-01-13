@@ -16,7 +16,27 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(
           0xff0C0C0C,
         ),
-        dropdownMenuTheme: DropdownMenuThemeData(),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(
+              Color(
+                0xff2C2C2C,
+              ),
+            ),
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  8.0,
+                ),
+              ),
+            ),
+            textStyle: WidgetStateProperty.all(
+              TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
       home: HomeScreen(),
     );

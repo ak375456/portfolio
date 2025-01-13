@@ -16,9 +16,7 @@ class HomeScreen extends StatelessWidget {
               return Column(
                 children: [
                   CustomTopAppbarDesktop(),
-                  SizedBox(
-                    height: 120,
-                  ),
+                  SizedBox(height: 120),
                   HomeSectionWebsite(),
                 ],
               );
