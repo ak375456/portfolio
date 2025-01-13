@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_desktop.dart';
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_mobile.dart';
+import 'package:portfolio/util/home_section/home_section_desktop.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,9 +13,21 @@ class HomeScreen extends StatelessWidget {
         body: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth > 1080 || constraints.maxHeight > 1920) {
-              return CustomTopAppbarDesktop();
+              return Column(
+                children: [
+                  CustomTopAppbarDesktop(),
+                  SizedBox(
+                    height: 120,
+                  ),
+                  HomeSectionWebsite(),
+                ],
+              );
             } else {
-              return CustomTopAppBarMobile();
+              return Column(
+                children: [
+                  CustomTopAppBarMobile(),
+                ],
+              );
             }
           },
         ),
