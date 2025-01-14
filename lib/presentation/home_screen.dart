@@ -3,6 +3,7 @@ import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_desktop.dart'
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_mobile.dart';
 import 'package:portfolio/util/home_section/home_section_desktop.dart';
 import 'package:portfolio/util/home_section/home_section_mobile.dart';
+import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,14 +23,16 @@ class HomeScreen extends StatelessWidget {
                 ],
               );
             } else {
-              return Column(
-                children: [
-                  CustomTopAppBarMobile(),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  HomeSectionMobile(),
-                ],
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomTopAppBarMobile(),
+                    SizedBox(height: 24.0),
+                    HomeSectionMobile(),
+                    SizedBox(height: 24.0),
+                    ToolsSectionMobile(),
+                  ],
+                ),
               );
             }
           },
