@@ -15,7 +15,7 @@ class HomeSectionWebsite extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "I'am \nAftab Fazal",
+                  "I'am\nAftab Fazal",
                   style: TextStyle(
                       fontFamily: 'Inter', fontSize: 64.0, color: Colors.white),
                 ),
