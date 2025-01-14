@@ -64,6 +64,7 @@ flutter:
     - assets/aftab.png
     - assets/fonts/
     - assets/tool_icons/
+    - assets/tool_icons_web/
     - assets/
   #   - images/a_dot_ham.jpeg
 

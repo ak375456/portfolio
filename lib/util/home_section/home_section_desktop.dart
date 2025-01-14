@@ -43,13 +43,10 @@ class HomeSectionWebsite extends StatelessWidget {
               ],
             ),
             Container(
+              height: 300.0,
+              width: 300.0,
               decoration: BoxDecoration(
                 color: Colors.black,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    1000,
-                  ),
-                ),
               ),
               child: Image.asset(
                 "assets/aftab.png",

@@ -4,6 +4,7 @@ import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_mobile.dart';
 import 'package:portfolio/util/home_section/home_section_desktop.dart';
 import 'package:portfolio/util/home_section/home_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
+import 'package:portfolio/util/tools_section/tools_section_website.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,12 +16,16 @@ class HomeScreen extends StatelessWidget {
         body: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth > 1080 || constraints.maxHeight > 1920) {
-              return Column(
-                children: [
-                  CustomTopAppbarDesktop(),
-                  SizedBox(height: 120),
-                  HomeSectionWebsite(),
-                ],
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomTopAppbarDesktop(),
+                    SizedBox(height: 120),
+                    HomeSectionWebsite(),
+                    SizedBox(height: 120),
+                    ToolsSectionWebsite()
+                  ],
+                ),
               );
             } else {
               return SingleChildScrollView(
