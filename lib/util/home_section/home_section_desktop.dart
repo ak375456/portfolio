@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/util/my_button.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeSectionWebsite extends StatelessWidget {
   const HomeSectionWebsite({super.key});
@@ -29,33 +32,50 @@ class HomeSectionWebsite extends StatelessWidget {
                   children: [
                     CustomButton(
                       text: 'Hire Me',
-                      onPressed: () {},
+                      onPressed: _openGmail,
                     ),
                     SizedBox(
                       width: 20.0,
                     ),
                     CustomButton(
                       text: 'Download My CV',
-                      onPressed: () {},
+                      onPressed: _downloadCV,
                     ),
                   ],
-                )
+                ),
               ],
             ),
             Container(
               height: 300.0,
               width: 300.0,
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
+              decoration: BoxDecoration(),
               child: Image.asset(
                 "assets/aftab.png",
                 fit: BoxFit.fill,
               ),
-            )
+            ),
           ],
         ),
       ],
     );
+  }
+
+  void _downloadCV() {
+    final url = 'assets/cv.pdf';
+    html.AnchorElement(href: url)
+      ..target = 'blank'
+      ..download = 'cv.pdf'
+      ..click();
+  }
+
+  void _openGmail() async {
+    final gmailUrl = Uri.parse(
+        'https://mail.google.com/mail/?view=cm&fs=1&to=ak375456@gmail.com&su=Hiring Inquiry&body=Hi, I’d like to discuss an opportunity with you.');
+
+    if (await canLaunchUrl(gmailUrl)) {
+      await launchUrl(gmailUrl, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch Gmail';
+    }
   }
 }
