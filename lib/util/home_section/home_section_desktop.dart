@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/services.dart';
 import 'package:portfolio/util/my_button.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomeSectionWebsite extends StatelessWidget {
   const HomeSectionWebsite({super.key});
@@ -60,19 +59,4 @@ class HomeSectionWebsite extends StatelessWidget {
       ],
     );
   }
-
-  // void _sendEmail() async {
-  //   final emailUri = Uri(
-  //     scheme: 'mailto',
-  //     path: 'ak375456@gmail.com',
-  //     query:
-  //         'subject=Hiring Inquiry&body=Hi, I’d like to discuss an opportunity with you.',
-  //   );
-
-  //   if (await canLaunchUrl(emailUri)) {
-  //     await launchUrl(emailUri);
-  //   } else {
-  //     throw 'Could not launch email client';
-  //   }
-  // }
 }

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/services.dart';
 import 'package:portfolio/util/my_button.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:universal_html/html.dart' as html;
 
 class HomeSectionMobile extends StatelessWidget {
   const HomeSectionMobile({super.key});
@@ -38,9 +36,7 @@ class HomeSectionMobile extends StatelessWidget {
           Row(
             children: [
               CustomButton(
-                text: 'Hire Me',
-                onPressed: _openGmail,
-              ),
+                  text: 'Hire Me', onPressed: functions.openGmailForMobile),
               SizedBox(width: 20.0),
               CustomButton(
                 text: 'Download My CV',
@@ -55,17 +51,5 @@ class HomeSectionMobile extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  // Open Gmail method
-  void _openGmail() async {
-    final gmailUrl = Uri.parse(
-        'https://mail.google.com/mail/?view=cm&fs=1&to=ak375456@gmail.com&su=Hiring Inquiry&body=Hi, I’d like to discuss an opportunity with you.');
-
-    if (await canLaunchUrl(gmailUrl)) {
-      await launchUrl(gmailUrl, mode: LaunchMode.externalApplication);
-    } else {
-      throw 'Could not launch Gmail';
-    }
   }
 }

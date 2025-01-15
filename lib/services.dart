@@ -21,4 +21,15 @@ class ButtonFunctions with ChangeNotifier {
       throw 'Could not launch Gmail';
     }
   }
+
+  void openGmailForMobile() async {
+    final gmailUrl = Uri.parse(
+        'mailto:ak375456@gmail.com?subject=Hiring Inquiry&body=Hi, I’d like to discuss an opportunity with you.');
+
+    if (await canLaunchUrl(gmailUrl)) {
+      await launchUrl(gmailUrl, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch Gmail';
+    }
+  }
 }
