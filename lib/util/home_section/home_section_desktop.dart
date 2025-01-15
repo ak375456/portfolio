@@ -68,6 +68,21 @@ class HomeSectionWebsite extends StatelessWidget {
       ..click();
   }
 
+  // void _sendEmail() async {
+  //   final emailUri = Uri(
+  //     scheme: 'mailto',
+  //     path: 'ak375456@gmail.com',
+  //     query:
+  //         'subject=Hiring Inquiry&body=Hi, I’d like to discuss an opportunity with you.',
+  //   );
+
+  //   if (await canLaunchUrl(emailUri)) {
+  //     await launchUrl(emailUri);
+  //   } else {
+  //     throw 'Could not launch email client';
+  //   }
+  // }
+
   void _openGmail() async {
     final gmailUrl = Uri.parse(
         'https://mail.google.com/mail/?view=cm&fs=1&to=ak375456@gmail.com&su=Hiring Inquiry&body=Hi, I’d like to discuss an opportunity with you.');
