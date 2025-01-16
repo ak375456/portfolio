@@ -15,9 +15,21 @@ class ProjectSectionDesktop extends StatelessWidget {
           SizedBox(height: 16.0),
           CarouselSlider(
             items: [
-              buildImageContainer("assets/vote.png"),
-              buildImageContainer("assets/soc.png"),
-              buildImageContainer("assets/bud.png"),
+              buildImageWithOverlay(
+                assetPath: "assets/vote.png",
+                description:
+                    "Votify App: Vote for your candidate in both Minister of National Assembly and Minister of Province Assembly elections. Admin can start elections, verify candidates, and manage voters. Voters can also view the latest news.",
+              ),
+              buildImageWithOverlay(
+                assetPath: "assets/soc.png",
+                description:
+                    "Social Connect App: A seamless social platform with authentication and clean navigation. Users can create profiles, post content, interact with others' posts, and view profiles.",
+              ),
+              buildImageWithOverlay(
+                assetPath: "assets/bud.png",
+                description:
+                    "BuddyShuffle App: A social media app where you can add, block, and chat with friends. Features include robust authentication, friend requests, and private messaging.",
+              ),
             ],
             options: CarouselOptions(
               height: 500.0,
@@ -35,21 +47,32 @@ class ProjectSectionDesktop extends StatelessWidget {
   }
 }
 
-Widget buildImageContainer(String assetPath) {
-  return HoverableImageContainer(assetPath: assetPath);
+Widget buildImageWithOverlay({
+  required String assetPath,
+  required String description,
+}) {
+  return HoverableImageWithOverlay(
+    assetPath: assetPath,
+    description: description,
+  );
 }
 
-class HoverableImageContainer extends StatefulWidget {
+class HoverableImageWithOverlay extends StatefulWidget {
   final String assetPath;
+  final String description;
 
-  const HoverableImageContainer({super.key, required this.assetPath});
+  const HoverableImageWithOverlay({
+    Key? key,
+    required this.assetPath,
+    required this.description,
+  }) : super(key: key);
 
   @override
-  _HoverableImageContainerState createState() =>
-      _HoverableImageContainerState();
+  _HoverableImageWithOverlayState createState() =>
+      _HoverableImageWithOverlayState();
 }
 
-class _HoverableImageContainerState extends State<HoverableImageContainer> {
+class _HoverableImageWithOverlayState extends State<HoverableImageWithOverlay> {
   bool _isHovered = false;
 
   @override
@@ -72,29 +95,43 @@ class _HoverableImageContainerState extends State<HoverableImageContainer> {
             throw 'Could not launch $githubUrl';
           }
         },
-        child: AnimatedScale(
-          scale: _isHovered ? 1.1 : 1.0, // Zoom scale
-          duration: Duration(milliseconds: 300), // Smooth animation
-          curve: Curves.easeInOut,
-          child: Container(
-            margin: EdgeInsets.all(6.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              image: DecorationImage(
-                image: AssetImage(widget.assetPath),
-                fit: BoxFit.cover,
+        child: Stack(
+          children: [
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                image: DecorationImage(
+                  image: AssetImage(widget.assetPath),
+                  fit: BoxFit.cover,
+                ),
               ),
-              boxShadow: _isHovered
-                  ? [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.3),
-                        blurRadius: 12.0,
-                        offset: Offset(0, 6),
-                      )
-                    ]
-                  : [],
+              foregroundDecoration: BoxDecoration(
+                color: _isHovered
+                    ? Colors.black.withOpacity(0.7)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              height: 500,
+              width: double.infinity,
             ),
-          ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  widget.description,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/util/contact_us_section/contact_us_section_desktop.dart';
+import 'package:portfolio/util/contact_us_section/contact_us_section_mobile.dart';
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_desktop.dart';
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_mobile.dart';
 import 'package:portfolio/util/home_section/home_section_desktop.dart';
@@ -34,7 +36,8 @@ class HomeScreen extends StatelessWidget {
                         fontFamily: 'Inter',
                       ),
                     ),
-                    ProjectSectionDesktop()
+                    ProjectSectionDesktop(),
+                    ContactUsSectionDesktop()
                   ],
                 ),
               );
@@ -55,7 +58,8 @@ class HomeScreen extends StatelessWidget {
                         fontFamily: 'Inter',
                       ),
                     ),
-                    ProjectSectionMobile()
+                    ProjectSectionMobile(),
+                    ContactUsSectionMobile()
                   ],
                 ),
               );

@@ -15,9 +15,21 @@ class ProjectSectionMobile extends StatelessWidget {
           SizedBox(height: 16.0),
           CarouselSlider(
             items: [
-              buildImageContainer("assets/vote.png"),
-              buildImageContainer("assets/soc.png"),
-              buildImageContainer("assets/bud.png"),
+              buildImageWithOverlay(
+                assetPath: "assets/vote.png",
+                description:
+                    "Votify App: Vote for your candidate in both Minister of National Assembly and Minister of Province Assembly elections. Admin can start elections, verify candidates, and manage voters. Voters can also view the latest news.",
+              ),
+              buildImageWithOverlay(
+                assetPath: "assets/soc.png",
+                description:
+                    "Social Connect App: A seamless social platform with authentication and clean navigation. Users can create profiles, post content, interact with others' posts, and view profiles.",
+              ),
+              buildImageWithOverlay(
+                assetPath: "assets/bud.png",
+                description:
+                    "BuddyShuffle App: A social media app where you can add, block, and chat with friends. Features include robust authentication, friend requests, and private messaging.",
+              ),
             ],
             options: CarouselOptions(
               height: 500.0,
