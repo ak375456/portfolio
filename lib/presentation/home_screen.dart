@@ -3,6 +3,8 @@ import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_desktop.dart'
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_mobile.dart';
 import 'package:portfolio/util/home_section/home_section_desktop.dart';
 import 'package:portfolio/util/home_section/home_section_mobile.dart';
+import 'package:portfolio/util/project_section/project_section_desktop.dart';
+import 'package:portfolio/util/project_section/project_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_website.dart';
 
@@ -31,7 +33,8 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Inter',
                       ),
-                    )
+                    ),
+                    ProjectSectionDesktop()
                   ],
                 ),
               );
@@ -41,10 +44,18 @@ class HomeScreen extends StatelessWidget {
                   spacing: 24.0,
                   children: [
                     CustomTopAppBarMobile(),
-                    SizedBox(height: 24.0),
                     HomeSectionMobile(),
-                    SizedBox(height: 24.0),
                     ToolsSectionMobile(),
+                    Text(
+                      "Projects",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Inter',
+                      ),
+                    ),
+                    ProjectSectionMobile()
                   ],
                 ),
               );
