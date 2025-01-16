@@ -18,18 +18,27 @@ class HomeScreen extends StatelessWidget {
             if (constraints.maxWidth > 1080 || constraints.maxHeight > 1920) {
               return SingleChildScrollView(
                 child: Column(
+                  spacing: 120.0,
                   children: [
                     CustomTopAppbarDesktop(),
-                    SizedBox(height: 120),
                     HomeSectionWebsite(),
-                    SizedBox(height: 120),
-                    ToolsSectionWebsite()
+                    ToolsSectionWebsite(),
+                    Text(
+                      "Projects",
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Inter',
+                      ),
+                    )
                   ],
                 ),
               );
             } else {
               return SingleChildScrollView(
                 child: Column(
+                  spacing: 24.0,
                   children: [
                     CustomTopAppBarMobile(),
                     SizedBox(height: 24.0),
