@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomTopAppBarMobile extends StatelessWidget {
-  const CustomTopAppBarMobile({super.key});
+  final VoidCallback onHomePressed;
+  final VoidCallback onProjectsPressed;
+  final VoidCallback onServicesPressed;
+  final VoidCallback onContactPressed;
+
+  const CustomTopAppBarMobile({
+    Key? key,
+    required this.onHomePressed,
+    required this.onProjectsPressed,
+    required this.onServicesPressed,
+    required this.onContactPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,42 +43,46 @@ class CustomTopAppBarMobile extends StatelessWidget {
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: 'home',
-                child: Text(
+                child: const Text(
                   'Home',
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuItem(
                 value: 'projects',
-                child: Text(
-                  'Projects',
-                  style: const TextStyle(color: Colors.white),
+                child: const Text(
+                  'Tools',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuItem(
                 value: 'services',
-                child: Text(
-                  'Services',
-                  style: const TextStyle(color: Colors.white),
+                child: const Text(
+                  'Projects',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuItem(
                 value: 'contact',
-                child: Text(
-                  'Contact',
-                  style: const TextStyle(color: Colors.white),
+                child: const Text(
+                  'Contact Us',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
             onSelected: (value) {
               switch (value) {
                 case 'home':
+                  onHomePressed();
                   break;
                 case 'projects':
+                  onServicesPressed();
                   break;
                 case 'services':
+                  onProjectsPressed();
                   break;
                 case 'contact':
+                  onContactPressed();
                   break;
               }
             },

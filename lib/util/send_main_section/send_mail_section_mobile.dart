@@ -40,19 +40,19 @@ class _SendMailSectionMobileState extends State<SendMailSectionMobile> {
           title: const Text("Choose Email Option"),
           content: const Text("How would you like to send the email?"),
           actions: [
-            TextButton(
+            CustomButton(
               onPressed: () {
                 Navigator.pop(context);
                 _sendEmailApp();
               },
-              child: const Text("Open Email App"),
+              text: "Open Email App",
             ),
-            TextButton(
+            CustomButton(
               onPressed: () {
                 Navigator.pop(context);
                 _openGmailWebsite();
               },
-              child: const Text("Open Gmail Website"),
+              text: "Open Gmail Website",
             ),
           ],
         );

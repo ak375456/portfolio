@@ -14,8 +14,30 @@ import 'package:portfolio/util/social_media_section/social_media_section_mobile.
 import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_website.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController scrollController = ScrollController();
+  final GlobalKey _homeKey = GlobalKey();
+  final GlobalKey _projectsKey = GlobalKey();
+  final GlobalKey _toolsKey = GlobalKey();
+  final GlobalKey _contactKey = GlobalKey();
+
+  void scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: Duration(seconds: 1),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +47,28 @@ class HomeScreen extends StatelessWidget {
           builder: (context, constraints) {
             if (constraints.maxWidth > 1080 || constraints.maxHeight > 1920) {
               return SingleChildScrollView(
+                controller: scrollController,
                 child: Column(
                   spacing: 120.0,
                   children: [
-                    CustomTopAppbarDesktop(),
-                    HomeSectionWebsite(),
-                    ToolsSectionWebsite(),
+                    CustomTopAppbarDesktop(
+                      onHomePressed: () => scrollToSection(_homeKey),
+                      onProjectsPressed: () => scrollToSection(_projectsKey),
+                      onServicesPressed: () => scrollToSection(_toolsKey),
+                      onContactPressed: () => scrollToSection(_contactKey),
+                    ),
+                    Column(
+                      key: _homeKey,
+                      children: [
+                        HomeSectionWebsite(),
+                      ],
+                    ),
+                    Column(
+                      key: _toolsKey,
+                      children: [
+                        ToolsSectionWebsite(),
+                      ],
+                    ),
                     Text(
                       "Projects",
                       style: TextStyle(
@@ -40,8 +78,18 @@ class HomeScreen extends StatelessWidget {
                         fontFamily: 'Inter',
                       ),
                     ),
-                    ProjectSectionDesktop(),
-                    ContactUsSectionDesktop(),
+                    Column(
+                      key: _projectsKey,
+                      children: [
+                        ProjectSectionDesktop(),
+                      ],
+                    ),
+                    Column(
+                      key: _contactKey,
+                      children: [
+                        ContactUsSectionDesktop(),
+                      ],
+                    ),
                     SendMailSectionDesktop(),
                     SocialMediaSectionDesktop()
                   ],
@@ -49,12 +97,28 @@ class HomeScreen extends StatelessWidget {
               );
             } else {
               return SingleChildScrollView(
+                controller: scrollController,
                 child: Column(
                   spacing: 24.0,
                   children: [
-                    CustomTopAppBarMobile(),
-                    HomeSectionMobile(),
-                    ToolsSectionMobile(),
+                    CustomTopAppBarMobile(
+                      onHomePressed: () => scrollToSection(_homeKey),
+                      onProjectsPressed: () => scrollToSection(_projectsKey),
+                      onServicesPressed: () => scrollToSection(_toolsKey),
+                      onContactPressed: () => scrollToSection(_contactKey),
+                    ),
+                    Column(
+                      key: _homeKey,
+                      children: [
+                        HomeSectionMobile(),
+                      ],
+                    ),
+                    Column(
+                      key: _toolsKey,
+                      children: [
+                        ToolsSectionMobile(),
+                      ],
+                    ),
                     Text(
                       "Projects",
                       style: TextStyle(
@@ -64,10 +128,20 @@ class HomeScreen extends StatelessWidget {
                         fontFamily: 'Inter',
                       ),
                     ),
-                    ProjectSectionMobile(),
-                    ContactUsSectionMobile(),
+                    Column(
+                      key: _projectsKey,
+                      children: [
+                        ProjectSectionMobile(),
+                      ],
+                    ),
+                    Column(
+                      key: _contactKey,
+                      children: [
+                        ContactUsSectionMobile(),
+                      ],
+                    ),
                     SendMailSectionMobile(),
-                    SocialMediaSectionMobile()
+                    SocialMediaSectionMobile(),
                   ],
                 ),
               );

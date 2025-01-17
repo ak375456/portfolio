@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 
 class CustomTopAppbarDesktop extends StatelessWidget {
-  const CustomTopAppbarDesktop({super.key});
+  final VoidCallback onHomePressed;
+  final VoidCallback onProjectsPressed;
+  final VoidCallback onServicesPressed;
+  final VoidCallback onContactPressed;
+
+  const CustomTopAppbarDesktop({
+    super.key,
+    required this.onHomePressed,
+    required this.onProjectsPressed,
+    required this.onServicesPressed,
+    required this.onContactPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 70,
       decoration: BoxDecoration(
-        color: Color.fromARGB(
-          255,
-          44,
-          44,
-          44,
-        ),
+        color: Color.fromARGB(255, 44, 44, 44),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 110.0,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 110.0),
             child: Text(
               "Portfolio",
               style: TextStyle(
@@ -32,13 +36,11 @@ class CustomTopAppbarDesktop extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              right: 65.0,
-            ),
+            padding: const EdgeInsets.only(right: 65.0),
             child: Row(
               children: <Widget>[
                 TextButton(
-                  onPressed: () {},
+                  onPressed: onHomePressed,
                   child: Text(
                     "Home",
                     style: TextStyle(
@@ -49,7 +51,18 @@ class CustomTopAppbarDesktop extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: onServicesPressed,
+                  child: Text(
+                    "tools",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: onProjectsPressed,
                   child: Text(
                     "Projects",
                     style: TextStyle(
@@ -60,18 +73,7 @@ class CustomTopAppbarDesktop extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Services",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
+                  onPressed: onContactPressed,
                   child: Text(
                     "Contact",
                     style: TextStyle(
