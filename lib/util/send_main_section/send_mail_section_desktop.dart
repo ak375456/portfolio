@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/util/custom_textfield.dart';
 import 'package:portfolio/util/my_button.dart';
@@ -70,7 +72,9 @@ class _SendMailSectionDesktopState extends State<SendMailSectionDesktop> {
           ),
           CustomButton(
             text: "Submit",
-            onPressed: () {},
+            onPressed: () {
+              log(nameController.text);
+            },
           ),
         ],
       ),
