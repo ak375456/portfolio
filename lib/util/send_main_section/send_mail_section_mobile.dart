@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:mailto/mailto.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio/util/custom_textfield.dart';
 import 'package:portfolio/util/my_button.dart';
 
@@ -15,6 +15,7 @@ class _SendMailSectionMobileState extends State<SendMailSectionMobile> {
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController messageController;
+
   @override
   void initState() {
     nameController = TextEditingController();
@@ -29,6 +30,68 @@ class _SendMailSectionMobileState extends State<SendMailSectionMobile> {
     emailController.dispose();
     messageController.dispose();
     super.dispose();
+  }
+
+  Future<void> _showEmailOptionsDialog() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Choose Email Option"),
+          content: const Text("How would you like to send the email?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                _sendEmailApp();
+              },
+              child: const Text("Open Email App"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                _openGmailWebsite();
+              },
+              child: const Text("Open Gmail Website"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _sendEmailApp() async {
+    final mailtoLink = Mailto(
+      to: ['ak375456@gmail.com'],
+      subject: 'New Message from Portfolio',
+      body: '''
+Name: ${nameController.text}
+Email: ${emailController.text}
+Message: ${messageController.text}
+      ''',
+    );
+
+    final mailtoUrl = mailtoLink.toString();
+    if (await canLaunchUrl(Uri.parse(mailtoUrl))) {
+      await launchUrl(Uri.parse(mailtoUrl));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open email app.')),
+      );
+    }
+  }
+
+  Future<void> _openGmailWebsite() async {
+    final gmailUrl =
+        'https://mail.google.com/mail/?view=cm&fs=1&to=ak375456@gmail.com&su=New%20Message%20from%20Portfolio&body=Name:%20${Uri.encodeComponent(nameController.text)}%0AEmail:%20${Uri.encodeComponent(emailController.text)}%0AMessage:%20${Uri.encodeComponent(messageController.text)}';
+    if (await canLaunchUrl(Uri.parse(gmailUrl))) {
+      await launchUrl(Uri.parse(gmailUrl),
+          mode: LaunchMode.externalApplication);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open Gmail website.')),
+      );
+    }
   }
 
   @override
@@ -72,7 +135,15 @@ class _SendMailSectionMobileState extends State<SendMailSectionMobile> {
           CustomButton(
             text: "Submit",
             onPressed: () {
-              log(nameController.text);
+              if (nameController.text.isNotEmpty &&
+                  emailController.text.isNotEmpty &&
+                  messageController.text.isNotEmpty) {
+                _showEmailOptionsDialog();
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Please fill in all fields.')),
+                );
+              }
             },
           ),
         ],
