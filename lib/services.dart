@@ -4,10 +4,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ButtonFunctions with ChangeNotifier {
   void downloadCV() {
-    final url = 'assets/cv.pdf';
+    final url =
+        'https://drive.google.com/file/d/1FD3zae0UJlU-MpSJVVta4bsnibNYnKps/view?usp=sharing';
     html.AnchorElement(href: url)
-      ..target = 'blank'
-      ..download = 'cv.pdf'
+      ..target = '_blank' // Opens the link in a new tab
       ..click();
   }
 

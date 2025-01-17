@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/util/project_section/project_section_desktop.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectSectionMobile extends StatelessWidget {
   const ProjectSectionMobile({super.key});
@@ -42,6 +42,97 @@ class ProjectSectionMobile extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+Widget buildImageWithOverlay({
+  required String assetPath,
+  required String description,
+}) {
+  return HoverableImageWithOverlay(
+    assetPath: assetPath,
+    description: description,
+  );
+}
+
+class HoverableImageWithOverlay extends StatefulWidget {
+  final String assetPath;
+  final String description;
+
+  const HoverableImageWithOverlay({
+    Key? key,
+    required this.assetPath,
+    required this.description,
+  }) : super(key: key);
+
+  @override
+  _HoverableImageWithOverlayState createState() =>
+      _HoverableImageWithOverlayState();
+}
+
+class _HoverableImageWithOverlayState extends State<HoverableImageWithOverlay> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() {
+        _isHovered = true;
+      }),
+      onExit: (_) => setState(() {
+        _isHovered = false;
+      }),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () async {
+          const githubUrl = "https://github.com/ak375456";
+          if (await canLaunchUrl(Uri.parse(githubUrl))) {
+            await launchUrl(Uri.parse(githubUrl),
+                mode: LaunchMode.externalApplication);
+          } else {
+            throw 'Could not launch $githubUrl';
+          }
+        },
+        child: Stack(
+          children: [
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                image: DecorationImage(
+                  image: AssetImage(widget.assetPath),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              foregroundDecoration: BoxDecoration(
+                color: _isHovered
+                    ? Colors.black.withOpacity(0.7)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              height: 500,
+              width: double.infinity,
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  widget.description,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 8.0,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 122, 122, 122),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
