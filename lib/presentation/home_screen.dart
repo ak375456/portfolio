@@ -7,6 +7,7 @@ import 'package:portfolio/util/home_section/home_section_desktop.dart';
 import 'package:portfolio/util/home_section/home_section_mobile.dart';
 import 'package:portfolio/util/project_section/project_section_desktop.dart';
 import 'package:portfolio/util/project_section/project_section_mobile.dart';
+import 'package:portfolio/util/send_main_section/send_mail_section_desktop.dart';
 import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_website.dart';
 
@@ -37,7 +38,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     ProjectSectionDesktop(),
-                    ContactUsSectionDesktop()
+                    ContactUsSectionDesktop(),
+                    SendMailSectionDesktop()
                   ],
                 ),
               );

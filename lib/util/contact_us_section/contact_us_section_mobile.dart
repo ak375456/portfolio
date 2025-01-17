@@ -29,6 +29,5 @@ class ContactUsSectionMobile extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

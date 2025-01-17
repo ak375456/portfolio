@@ -45,13 +45,6 @@ class CustomTopAppBarMobile extends StatelessWidget {
                 ),
               ),
               PopupMenuItem(
-                value: 'clients',
-                child: Text(
-                  'Clients',
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-              PopupMenuItem(
                 value: 'services',
                 child: Text(
                   'Services',
@@ -71,8 +64,6 @@ class CustomTopAppBarMobile extends StatelessWidget {
                 case 'home':
                   break;
                 case 'projects':
-                  break;
-                case 'clients':
                   break;
                 case 'services':
                   break;

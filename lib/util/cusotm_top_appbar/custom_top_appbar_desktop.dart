@@ -62,17 +62,6 @@ class CustomTopAppbarDesktop extends StatelessWidget {
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    "Clients",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
                     "Services",
                     style: TextStyle(
                       fontSize: 20.0,
