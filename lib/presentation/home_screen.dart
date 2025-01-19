@@ -91,7 +91,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     SendMailSectionDesktop(),
-                    SocialMediaSectionDesktop()
+                    SocialMediaSectionDesktop(),
+                    SizedBox(
+                      height: 80.0,
+                    ),
                   ],
                 ),
               );
@@ -142,6 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SendMailSectionMobile(),
                     SocialMediaSectionMobile(),
+                    SizedBox(
+                      height: 40.0,
+                    ),
                   ],
                 ),
               );
