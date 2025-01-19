@@ -5,8 +5,6 @@ import 'package:portfolio/util/home_section/home_section_desktop.dart';
 import 'package:portfolio/util/home_section/home_section_mobile.dart';
 import 'package:portfolio/util/project_section/project_section_desktop.dart';
 import 'package:portfolio/util/project_section/project_section_mobile.dart';
-import 'package:portfolio/util/send_main_section/send_mail_section_desktop.dart';
-import 'package:portfolio/util/send_main_section/send_mail_section_mobile.dart';
 import 'package:portfolio/util/social_media_section/social_media_section_desktop.dart';
 import 'package:portfolio/util/social_media_section/social_media_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
@@ -80,7 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ProjectSectionDesktop(),
                       ],
                     ),
-                    SendMailSectionDesktop(),
                     SocialMediaSectionDesktop(),
                     SizedBox(
                       height: 60.0,
@@ -126,7 +123,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ProjectSectionMobile(),
                       ],
                     ),
-                    SendMailSectionMobile(),
                     SocialMediaSectionMobile(),
                     SizedBox(
                       height: 40.0,
