@@ -4,14 +4,12 @@ class CustomTopAppbarDesktop extends StatelessWidget {
   final VoidCallback onHomePressed;
   final VoidCallback onProjectsPressed;
   final VoidCallback onServicesPressed;
-  final VoidCallback onContactPressed;
 
   const CustomTopAppbarDesktop({
     super.key,
     required this.onHomePressed,
     required this.onProjectsPressed,
     required this.onServicesPressed,
-    required this.onContactPressed,
   });
 
   @override
@@ -65,17 +63,6 @@ class CustomTopAppbarDesktop extends StatelessWidget {
                   onPressed: onProjectsPressed,
                   child: Text(
                     "Projects",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: onContactPressed,
-                  child: Text(
-                    "Contact",
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.w300,

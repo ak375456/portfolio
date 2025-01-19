@@ -4,15 +4,13 @@ class CustomTopAppBarMobile extends StatelessWidget {
   final VoidCallback onHomePressed;
   final VoidCallback onProjectsPressed;
   final VoidCallback onServicesPressed;
-  final VoidCallback onContactPressed;
 
   const CustomTopAppBarMobile({
-    Key? key,
+    super.key,
     required this.onHomePressed,
     required this.onProjectsPressed,
     required this.onServicesPressed,
-    required this.onContactPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +78,6 @@ class CustomTopAppBarMobile extends StatelessWidget {
                   break;
                 case 'services':
                   onProjectsPressed();
-                  break;
-                case 'contact':
-                  onContactPressed();
                   break;
               }
             },

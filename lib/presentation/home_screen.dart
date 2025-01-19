@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/util/contact_us_section/contact_us_section_desktop.dart';
-import 'package:portfolio/util/contact_us_section/contact_us_section_mobile.dart';
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_desktop.dart';
 import 'package:portfolio/util/cusotm_top_appbar/custom_top_appbar_mobile.dart';
 import 'package:portfolio/util/home_section/home_section_desktop.dart';
@@ -26,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey _homeKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
   final GlobalKey _toolsKey = GlobalKey();
-  final GlobalKey _contactKey = GlobalKey();
 
   void scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -55,7 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       onHomePressed: () => scrollToSection(_homeKey),
                       onProjectsPressed: () => scrollToSection(_projectsKey),
                       onServicesPressed: () => scrollToSection(_toolsKey),
-                      onContactPressed: () => scrollToSection(_contactKey),
                     ),
                     Column(
                       key: _homeKey,
@@ -84,16 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ProjectSectionDesktop(),
                       ],
                     ),
-                    Column(
-                      key: _contactKey,
-                      children: [
-                        ContactUsSectionDesktop(),
-                      ],
-                    ),
                     SendMailSectionDesktop(),
                     SocialMediaSectionDesktop(),
                     SizedBox(
-                      height: 80.0,
+                      height: 60.0,
                     ),
                   ],
                 ),
@@ -108,7 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       onHomePressed: () => scrollToSection(_homeKey),
                       onProjectsPressed: () => scrollToSection(_projectsKey),
                       onServicesPressed: () => scrollToSection(_toolsKey),
-                      onContactPressed: () => scrollToSection(_contactKey),
                     ),
                     Column(
                       key: _homeKey,
@@ -135,12 +124,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       key: _projectsKey,
                       children: [
                         ProjectSectionMobile(),
-                      ],
-                    ),
-                    Column(
-                      key: _contactKey,
-                      children: [
-                        ContactUsSectionMobile(),
                       ],
                     ),
                     SendMailSectionMobile(),
