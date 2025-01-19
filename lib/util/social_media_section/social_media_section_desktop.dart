@@ -8,6 +8,18 @@ class SocialMediaSectionDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Text(
+          "Contact Me!",
+          style: TextStyle(
+            fontSize: 40,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Inter',
+          ),
+        ),
+        SizedBox(
+          height: 70,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 120,

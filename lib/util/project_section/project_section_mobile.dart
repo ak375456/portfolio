@@ -62,10 +62,10 @@ class HoverableImageWithOverlay extends StatefulWidget {
   final String description;
 
   const HoverableImageWithOverlay({
-    Key? key,
+    super.key,
     required this.assetPath,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   _HoverableImageWithOverlayState createState() =>
@@ -104,12 +104,11 @@ class _HoverableImageWithOverlayState extends State<HoverableImageWithOverlay> {
                 borderRadius: BorderRadius.circular(12.0),
                 image: DecorationImage(
                   image: AssetImage(widget.assetPath),
-                  fit: BoxFit.cover,
                 ),
               ),
               foregroundDecoration: BoxDecoration(
                 color: _isHovered
-                    ? Colors.black.withOpacity(0.7)
+                    ? Colors.black.withValues(alpha: 0.7)
                     : Colors.transparent,
                 borderRadius: BorderRadius.circular(12.0),
               ),

@@ -11,7 +11,7 @@ import 'package:portfolio/util/tools_section/tools_section_mobile.dart';
 import 'package:portfolio/util/tools_section/tools_section_website.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
