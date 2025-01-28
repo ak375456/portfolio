@@ -32,7 +32,7 @@ class ProjectSectionMobile extends StatelessWidget {
               ),
             ],
             options: CarouselOptions(
-              height: 500.0,
+              // height: 250.0,
               enlargeCenterPage: true,
               autoPlay: false,
               autoPlayInterval: Duration(seconds: 3),
