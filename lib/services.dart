@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class ButtonFunctions with ChangeNotifier {
   void downloadCV() {
     final url =
-        'https://drive.google.com/file/d/1FD3zae0UJlU-MpSJVVta4bsnibNYnKps/view?usp=sharing';
+        'https://drive.google.com/file/d/1kMgZjHtM6LZP1A0N-OoDsc-k5RZ78X9x/view?usp=sharing';
     html.AnchorElement(href: url)
       ..target = '_blank' // Opens the link in a new tab
       ..click();
